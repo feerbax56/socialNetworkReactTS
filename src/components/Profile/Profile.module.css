@@ -1,0 +1,12 @@
+
+.item {
+    color: brown;
+}
+
+.item.active {
+    color: rgb(241, 254, 2);
+}
+
+img {
+    width: 100%;
+}

@@ -1,0 +1,14 @@
+.item {
+    color: brown;
+}
+
+.item.active {
+    color: rgb(241, 254, 2);
+}
+
+.item img {
+    width: 50px;
+    height: 50PX;
+    border-radius: 5px;
+
+}
