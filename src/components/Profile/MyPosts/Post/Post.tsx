@@ -1,6 +1,12 @@
 import classes from './Post.module.css'
 
-const Post = (props) => {
+type PostPropsType = {
+    message: string;
+    likesCount: number
+}
+
+
+const Post = (props: PostPropsType) => {
 
 
     return (

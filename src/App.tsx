@@ -4,7 +4,7 @@ import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -13,13 +13,13 @@ function App() {
               <Header />
               <Navbar />
               <div className='app-wrapper-content'>
-                  <Routes>
-                      <Route path='/dialog' element={<Dialogs />} />
-                      <Route path='/profile' element={<Profile />} />
-                      <Route path='/news' element={<Profile />} />
-                      <Route path='/music' element={<Profile />} />
-                      <Route path='/setting' element={<Profile />} />
-                  </Routes>
+
+                      <Route path='/dialog'><Dialogs /> </Route>
+                      <Route path='/profile'> <Profile /></Route>
+                      <Route path='/news'> <Profile /></Route>
+                      <Route path='/music'> <Profile /></Route>
+                      <Route path='/setting'> <Profile /></Route>
+
               </div>
           </div>
       </BrowserRouter>
