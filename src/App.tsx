@@ -21,6 +21,7 @@ function App() {
                       <Route path='/setting'> <Profile /></Route>
 
               </div>
+              <div>проверка связи</div>
           </div>
       </BrowserRouter>
   );
