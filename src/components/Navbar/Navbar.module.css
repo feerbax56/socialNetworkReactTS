@@ -10,6 +10,7 @@
 
 .item a {
     color: white;
+    text-decoration: none;
 }
 
 .item a.active {
