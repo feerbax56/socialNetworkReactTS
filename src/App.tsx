@@ -13,13 +13,11 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-
                     <Route path='/dialog'><Dialogs/> </Route>
                     <Route path='/profile'> <Profile/></Route>
                     <Route path='/news'> <Profile/></Route>
                     <Route path='/music'> <Profile/></Route>
                     <Route path='/setting'> <Profile/></Route>
-
                 </div>
             </div>
         </BrowserRouter>
