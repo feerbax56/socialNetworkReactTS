@@ -6,8 +6,8 @@ const Profile = () => {
         <div>
             <div>
                 <img className={classes.img}
-                    src='https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arenal_0.jpg'
-                    alt='Earth'></img>
+                     src='https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arenal_0.jpg'
+                     alt='Earth'></img>
             </div>
             <div>
                 ava + description
