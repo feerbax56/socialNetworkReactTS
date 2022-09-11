@@ -7,14 +7,20 @@ const MyPosts = () => {
         <div className={classes.content}>
 
             <div>
-                My post
+                <h3>My post</h3>
             </div>
             <div>
-                New post
+                <div>
+                    <textarea></textarea>
+                </div>
+                <div>
+                    <button>Add post</button>
+                </div>
             </div>
-            <div className='posts'>
+
+            <div className="posts">
                 <Post message={'Hi, go back!'} likesCount={4}/>
-                <Post message={'It is good'} likesCount={3} />
+                <Post message={'It is good'} likesCount={3}/>
             </div>
         </div>
     )

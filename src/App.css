@@ -19,6 +19,6 @@ body {
 .app-wrapper-content {
     background-color: azure;
     grid-area: c;
-
+    /*padding: 10px;*/
 }
 

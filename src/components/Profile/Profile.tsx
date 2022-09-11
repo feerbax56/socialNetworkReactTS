@@ -1,17 +1,12 @@
 import MyPosts from './MyPosts/MyPosts';
-import classes from './Profile.module.css'
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+
 
 const Profile = () => {
     return (
         <div>
-            <div>
-                <img className={classes.img}
-                     src='https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arenal_0.jpg'
-                     alt='Earth'></img>
-            </div>
-            <div>
-                ava + description
-            </div>
+            <ProfileInfo
+                src={'https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arenal_0.jpg'}/>
             <MyPosts/>
         </div>
     )
