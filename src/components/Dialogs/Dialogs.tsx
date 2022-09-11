@@ -28,22 +28,35 @@ const Message: React.FC<MessageType> = (props) => {
 
 
 const Dialogs = () => {
+
+    let DialogsData = [
+        {id: 1, name: 'Robot'},
+        {id: 2, name: 'BigBurger'},
+        {id: 3, name: 'Valera'},
+        {id: 4, name: 'Anton'},
+        {id: 5, name: 'Pavel'},
+        {id: 6, name: 'Alex'},
+        {id: 7, name: 'Sveta'},
+    ]
+
+    let MessageData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'Hi every won'},
+        {id: 3, message: 'Hi people!!!'},
+        {id: 4, message: 'good news!'},
+
+    ]
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                <DialogItem name={'Robot'} id={1}/>
-                <DialogItem name={'BigBurger'} id={2}/>
-                <DialogItem name={'Valera'} id={3}/>
-                <DialogItem name={'Anton'} id={4}/>
-                <DialogItem name={'Pavel'} id={5}/>
-                <DialogItem name={'Alex'} id={6}/>
-                <DialogItem name={'Sveta'} id={7}/>
+                <DialogItem name={DialogsData[0].name} id={DialogsData[0].id}/>
+                <DialogItem name={DialogsData[1].name} id={DialogsData[1].id}/>
             </div>
             <div className={classes.messages}>
-                <Message message={'Hi'}/>
-                <Message message={'Hi every won'}/>
-                <Message message={'Hi people!!!'}/>
-                <Message message={'good news!'}/>
+                <Message message={MessageData[0].message}/>
+                <Message message={MessageData[1].message}/>
+                <Message message={MessageData[2].message}/>
             </div>
         </div>)
 }
