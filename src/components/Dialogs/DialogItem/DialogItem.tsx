@@ -2,10 +2,6 @@ import classes from './../Dialogs.module.css'
 import {NavLink} from 'react-router-dom';
 import React from 'react';
 
-type DialogItemType = {
-    name: string
-    id: number
-}
 
 
 const DialogItem: React.FC<DialogItemType> = (props) => {

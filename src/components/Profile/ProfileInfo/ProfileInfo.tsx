@@ -1,15 +1,14 @@
 import classes from './ProfileInfo.module.css'
+import React from 'react';
 
 
-type ProfileInfo = {
-    src: string
-}
 
-const ProfileInfo: React.FC<ProfileInfo> = (props) => {
+
+const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
     return (<>
         <div className={classes.imgDiv}>
             <img className={classes.img}
-                 src={props.src}
+                 src='https://planetofhotels.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Arenal_0.jpg'
                  alt="Earth"></img>
         </div>
         <div className={classes.description}>
