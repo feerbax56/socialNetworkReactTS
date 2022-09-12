@@ -4,7 +4,7 @@ import React from 'react';
 
 
 
-const ProfileInfo: React.FC<ProfileInfoType> = (props) => {
+const ProfileInfo = () => {
     return (<>
         <div className={classes.imgDiv}>
             <img className={classes.img}

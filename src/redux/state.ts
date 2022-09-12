@@ -1,28 +1,25 @@
-type MessagesType = {
+export type MessagesType = {
     id: number
     message: string
 }
-type DialogsListType = {
+export type DialogsListType = {
     id: number
     name: string
 }
-type PostsType = {
-    id: number
+export type PostsType = {
+    id?: number
     message: string
     likesCount: number
 }
-
 type profilePageType = {
-    Posts: Array<PostsType>
+    posts: Array<PostsType>
 }
 type dialogPageType = {
-    DialogsList: Array<DialogsListType>
-    Messages: Array<MessagesType>
+    dialogsList: Array<DialogsListType>
+    messages: Array<MessagesType>
 }
-
 type SidebarType = {}
-
-type RootStateType = {
+export type RootStateType = {
     profilePage: profilePageType
     dialogPage: dialogPageType
     sidebar: SidebarType
@@ -31,14 +28,14 @@ type RootStateType = {
 
 let state: RootStateType = {
     profilePage: {
-        Posts: [
+        posts: [
             {id: 1, message: 'Hi', likesCount: 4},
             {id: 1, message: 'Hi, go back!', likesCount: 2},
             {id: 1, message: 'It is good', likesCount: 12},
         ]
     },
     dialogPage: {
-        DialogsList: [
+        dialogsList: [
             {id: 1, name: 'Robot'},
             {id: 2, name: 'BigBurger'},
             {id: 3, name: 'Valera'},
@@ -47,7 +44,7 @@ let state: RootStateType = {
             {id: 6, name: 'Alex'},
             {id: 7, name: 'Sveta'},
         ],
-        Messages: [
+        messages: [
             {id: 1, message: 'Hi'},
             {id: 2, message: 'Hi every won'},
             {id: 3, message: 'Hi people!!!'},
