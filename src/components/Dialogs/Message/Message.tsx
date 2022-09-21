@@ -6,8 +6,13 @@ type MessageType = {
 }
 
 const Message: React.FC<MessageType> = (props) => {
-    return (
-        <div className={classes.message}>{props.message}</div>
+
+
+
+    return (<>
+            <div className={classes.message}>{props.message}</div>
+
+        </>
     )
 
 }
