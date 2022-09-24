@@ -46,7 +46,7 @@ let state: RootStateType = {
             {id: 4, name: 'Anton'},
             {id: 5, name: 'Pavel'},
             {id: 6, name: 'Alex'},
-            {id: 7, name: 'Sveta'},
+            {id: 7, name: 'Elena'},
         ],
         messages: [
             {id: 1, message: 'Hi'},
@@ -58,13 +58,14 @@ let state: RootStateType = {
     sidebar: {}
 }
 
-export let addPost = (postMessage: string) => {
+export let addPost = () => {
     const newPost: PostsType = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.messageForNewPost,
         likesCount: 5
     };
     state.profilePage.posts.push(newPost)
+    state.profilePage.messageForNewPost = '';
     renderTree(state)
 }
 

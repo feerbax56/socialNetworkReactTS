@@ -14,7 +14,7 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
 
 
     let PostsElements = props.Posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
-let newTextChengeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+let newTextChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
     props.changeNewText(e.currentTarget.value)
 }
 
@@ -30,7 +30,7 @@ let newTextChengeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
             </div>
             <div>
                 <div>
-                    <textarea value={props.message} onChange={newTextChengeHandler}/>
+                    <textarea value={props.message} onChange={newTextChangeHandler}/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>
