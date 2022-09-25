@@ -1,4 +1,12 @@
-import {renderTree} from '../render';
+
+let renderTree = (state: RootStateType) => {
+    console.log('state')
+}
+
+
+export const subscribe = (callback: (state: RootStateType) => void) => {
+    renderTree = callback
+}
 
 export type MessagesType = {
     id: number

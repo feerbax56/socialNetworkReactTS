@@ -1,9 +1,20 @@
 import React from 'react';
 import './index.css';
-import state from './redux/state';
-import {renderTree} from './render';
+import {subscribe} from './redux/state';
+import ReactDOM from 'react-dom';
+import App from './App';
+import {BrowserRouter} from 'react-router-dom';
+
+let renderTree = () => {
+    ReactDOM.render(
+        < BrowserRouter>
+            <App/>
+        </BrowserRouter>, document.getElementById('root')
+    )
+}
 
 
-renderTree(state);
+subscribe(renderTree)
+
 
 

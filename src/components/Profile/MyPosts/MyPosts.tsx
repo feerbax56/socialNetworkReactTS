@@ -14,9 +14,9 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
 
 
     let PostsElements = props.Posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
-let newTextChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
-    props.changeNewText(e.currentTarget.value)
-}
+    let newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.changeNewText(e.currentTarget.value)
+    }
 
     let addPost = () => {
         props.addPost(props.message)
