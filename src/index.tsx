@@ -13,7 +13,7 @@ let renderTree = () => {
     )
 }
 
-
+renderTree()
 subscribe(renderTree)
 
 
