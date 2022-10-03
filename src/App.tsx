@@ -5,9 +5,16 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom'
-import state, {addPost, changeNewText} from './redux/state';
+import store, {StoreType} from './redux/state';
 
-const App = () => {
+type PropsType = {
+    store: StoreType
+}
+
+
+const App: React.FC<PropsType> = (props) => {
+
+    const state = store.getState()
 
     let message = state.dialogPage.messages
     let dialogs = state.dialogPage.dialogsList
@@ -25,8 +32,8 @@ const App = () => {
 
                     <Route path="/profile"> <Profile Posts={posts}
                                                      message={state.profilePage.messageForNewPost}
-                                                     addPost={addPost}
-                                                     changeNewText={changeNewText}
+                                                     addPost={props.store.addPost.bind(props.store)}
+                                                     changeNewText={props.store.changeNewText.bind(props.store)}
                     /></Route>
                     {/*<Route path='/news'> <Profile/></Route>*/}
                     {/*<Route path='/music'> <Profile/></Route>*/}
