@@ -32,8 +32,7 @@ const App: React.FC<PropsType> = (props) => {
 
                     <Route path="/profile"> <Profile Posts={posts}
                                                      message={state.profilePage.messageForNewPost}
-                                                     addPost={props.store.addPost.bind(props.store)}
-                                                     changeNewText={props.store.changeNewText.bind(props.store)}
+                                                     dispatch={props.store.dispatch.bind(props.store)}
                     /></Route>
                     {/*<Route path='/news'> <Profile/></Route>*/}
                     {/*<Route path='/music'> <Profile/></Route>*/}

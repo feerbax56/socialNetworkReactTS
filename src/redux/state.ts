@@ -28,12 +28,14 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    changeNewText: (newText: string) => void
-    addPost: (postText: string) => void
     _renderTree: () => void
     subscribe: (callback: () => void) => void
     getState: () => RootStateType
+    dispatch: (action: ActionsTypes) => void
 }
+
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+
 
 let store: StoreType = {
     _state: {
@@ -64,29 +66,46 @@ let store: StoreType = {
         },
         sidebar: {}
     },
-    changeNewText(newText: string) {
-        this._state.profilePage.messageForNewPost = newText
-        this._renderTree()
-    },
-    addPost(postText: string) {
-        const newPost: PostsType = {
-            id: 5,
-            message: this._state.profilePage.messageForNewPost,
-            likesCount: 5
-        };
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.messageForNewPost = '';
-        this._renderTree()
-    },
-    subscribe(callback) {
-        this._renderTree = callback
-    },
     _renderTree() {
         console.log('state')
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost: PostsType = {
+                id: 5,
+                message: this._state.profilePage.messageForNewPost,
+                likesCount: 5
+            };
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.messageForNewPost = '';
+            this._renderTree()
+        } else if (action.type === 'CHANGE-NEW-TEXT') {
+            this._state.profilePage.messageForNewPost = action.newText
+            this._renderTree()
+        }
+    },
+
+    subscribe(callback) {
+        this._renderTree = callback
     },
     getState() {
         return this._state
     }
+}
+
+export const addPostAC = (message: string) => {
+    return {
+        type: 'ADD-POST',
+        messageForNewPost: message
+    } as const
+}
+
+export const changeNewTextAC = (newText: string) => {
+    return {
+        type: 'CHANGE-NEW-TEXT',
+        newText: newText
+    } as const
 }
 
 export default store
