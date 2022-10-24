@@ -10,24 +10,11 @@ type MyPostsType = {
 }
 
 
-// let addPostAC = () => {
-//     return {
-//         type: 'ADD-POST',
-//         messageForNewPost: props.message
-//     }
-// }
-//
-// let changeNewTextAC  = () => {
-//     return {type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value}
-// }
-
-
 const MyPosts: React.FC<MyPostsType> = (props) => {
 
     let PostsElements = props.Posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let newTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        // let action: ChangeNewTextAT = {type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value};
         props.dispatch(changeNewTextAC(e.currentTarget.value))
     }
 
