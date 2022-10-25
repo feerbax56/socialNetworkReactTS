@@ -1,13 +1,15 @@
 import classes from './Dialogs.module.css'
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {DialogsListType, MessagesType} from '../../redux/state';
+import {ActionsTypes, addNewMessageAC, DialogsListType, MessagesType, sendMessageAC} from '../../redux/state';
 
 
 type DialogsPropsType = {
     Dialogs: Array<DialogsListType>
     Messages: Array<MessagesType>
+    dispatch: (action: ActionsTypes) => void
+    messag: string
 }
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
@@ -21,7 +23,12 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
     let addMessage = () => {
         let text = newMessageElement.current?.value
-        alert(text)
+        props.dispatch(sendMessageAC(props.messag))
+    }
+
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+       let body =  e.target.value;
+       props.dispatch(addNewMessageAC(body))
     }
 
     return (
@@ -34,7 +41,11 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
             </div>
 
             <div>
-                <textarea ref={newMessageElement}></textarea>
+                <textarea
+                    placeholder={'жми сюда!'}
+                    ref={newMessageElement}
+                    onChange={onNewMessageChange}
+                ></textarea>
             </div>
             <div>
                 <button onClick={addMessage}>send message</button>

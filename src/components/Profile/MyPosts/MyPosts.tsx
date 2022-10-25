@@ -30,7 +30,10 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
             </div>
             <div>
                 <div>
-                    <textarea value={props.message} onChange={newTextChangeHandler}/>
+                    <textarea
+                        value={props.message}
+                        onChange={newTextChangeHandler}
+                    />
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

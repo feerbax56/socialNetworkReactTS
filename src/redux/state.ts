@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD-POST'
+const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
+const SEND_MESSAGE = 'SEND_MESSAGE'
+
+
 export type MessagesType = {
     id: number
     message: string
@@ -18,6 +24,8 @@ type profilePageType = {
 type dialogPageType = {
     dialogsList: Array<DialogsListType>
     messages: Array<MessagesType>
+    newMessageText: string
+
 }
 type SidebarType = {}
 export type RootStateType = {
@@ -34,7 +42,7 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC> | ReturnType<typeof addNewMessageAC> | ReturnType<typeof sendMessageAC>
 
 
 let store: StoreType = {
@@ -62,7 +70,8 @@ let store: StoreType = {
                 {id: 2, message: 'Hi every won'},
                 {id: 3, message: 'Hi people!!!'},
                 {id: 4, message: 'good news!'},
-            ]
+            ],
+            newMessageText: ''
         },
         sidebar: {}
     },
@@ -71,41 +80,67 @@ let store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost: PostsType = {
                 id: 5,
                 message: this._state.profilePage.messageForNewPost,
                 likesCount: 5
             };
-            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.posts.unshift(newPost)
             this._state.profilePage.messageForNewPost = '';
             this._renderTree()
-        } else if (action.type === 'CHANGE-NEW-TEXT') {
+        } else if (action.type === CHANGE_NEW_TEXT) {
             this._state.profilePage.messageForNewPost = action.newText
             this._renderTree()
+        } else if (action.type === UPDATE_NEW_MESSAGE) {
+            this._state.dialogPage.newMessageText = action.newMessageText
+            this._renderTree();
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogPage.newMessageText
+            this._state.dialogPage.newMessageText = ''
+            this._state.dialogPage.messages.push({id: 6, message: body})
+            this._renderTree();
         }
-    },
+        },
 
-    subscribe(callback) {
-        this._renderTree = callback
-    },
-    getState() {
-        return this._state
+
+        subscribe(callback)
+        {
+            this._renderTree = callback
+        }
+    ,
+        getState()
+        {
+            return this._state
+        }
     }
-}
 
-export const addPostAC = (message: string) => {
-    return {
-        type: 'ADD-POST',
-        messageForNewPost: message
-    } as const
-}
+    export const addPostAC = (message: string) => {
+        return {
+            type: ADD_POST,
+            messageForNewPost: message
+        } as const
+    }
 
-export const changeNewTextAC = (newText: string) => {
-    return {
-        type: 'CHANGE-NEW-TEXT',
-        newText: newText
-    } as const
-}
+    export const changeNewTextAC = (newText: string) => {
+        return {
+            type: CHANGE_NEW_TEXT,
+            newText: newText
+        } as const
+    }
 
-export default store
+    export const addNewMessageAC = (newMessageText: string) => {
+        return {
+            type: UPDATE_NEW_MESSAGE,
+            newMessageText: newMessageText
+        } as const
+    }
+
+    export const sendMessageAC = (sendMessage: string) => {
+        return {
+            type: SEND_MESSAGE,
+            sendMessage: sendMessage
+        } as const
+    }
+
+    export default store
