@@ -19,6 +19,8 @@ const App: React.FC<PropsType> = (props) => {
     let message = state.dialogPage.messages
     let dialogs = state.dialogPage.dialogsList
     let posts = state.profilePage.posts
+    let messag = state.dialogPage.newMessageText
+
 
     return (
         <BrowserRouter>
@@ -29,7 +31,7 @@ const App: React.FC<PropsType> = (props) => {
                     <Route path="/dialog"
                            render={() => <Dialogs Dialogs={dialogs}
                                                   Messages={message}
-                                                  messag={state.dialogPage.newMessageText}
+                                                  messag={messag}
                                                   dispatch={props.store.dispatch.bind(props.store)}
                            />}/>
 

@@ -22,7 +22,7 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     let newMessageElement = React.createRef<HTMLTextAreaElement>()
 
     let addMessage = () => {
-        let text = newMessageElement.current?.value
+        // let text = newMessageElement.current?.value
         props.dispatch(sendMessageAC(props.messag))
     }
 
