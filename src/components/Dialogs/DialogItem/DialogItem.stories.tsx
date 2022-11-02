@@ -7,4 +7,4 @@ export default {
     component: DialogItem,
 };
 
-export const DialogsItemTest = () => <DialogsItem/>
+// export const DialogsItemTest = () => <DialogItem/>

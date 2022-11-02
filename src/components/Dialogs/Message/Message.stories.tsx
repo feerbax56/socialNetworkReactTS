@@ -7,4 +7,4 @@ export default {
     component: Message,
 };
 
-export const MessageTest = () => <Message/>
+// export const MessageTest = () => <Message/>
