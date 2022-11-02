@@ -26,7 +26,7 @@ export type dialogPageType = {
     newMessageText: string
 
 }
-type SidebarType = {}
+export type SidebarType = {}
 export type RootStateType = {
     profilePage: profilePageType
     dialogPage: dialogPageType
@@ -86,15 +86,14 @@ let store: StoreType = {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
-
-        subscribe(callback)
-        {
-            this._renderTree = callback
-        }
-        getState()
-        {
-            return this._state
-        }
+    },
+    subscribe(callback)
+    {
+        this._renderTree = callback
+    },
+    getState()
+    {
+        return this._state
     }
 }
 
