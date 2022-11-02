@@ -86,6 +86,7 @@ let store: StoreType = {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
     },
     subscribe(callback)
     {

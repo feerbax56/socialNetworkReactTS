@@ -1,7 +1,7 @@
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import React from 'react';
-import {ActionsTypes, PostsType} from '../../redux/state';
+import {ActionsTypes, PostsType} from '../../redux/store';
 
 
 type ProfileType = {
