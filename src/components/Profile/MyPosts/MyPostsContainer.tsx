@@ -9,7 +9,6 @@ type MyPostsType = {
 
 
 const MyPostsContainer: React.FC<MyPostsType> = (props) => {
-    console.log('props.store.getState()', props.store.getState())
     let posts = props.store.getState().profilePage.posts
     let message = props.store.getState().profilePage.messageForNewPost
     let dispatch = props.store.dispatch

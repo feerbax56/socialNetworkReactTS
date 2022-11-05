@@ -31,9 +31,9 @@ const dialogReducer = (state: dialogPageType = initialState, action: ActionsType
             state.newMessageText = action.newMessageText
             return state
         case SEND_MESSAGE:
-            let body = state.newMessageText
-            state.newMessageText = ''
-            state.messages.push({id: 6, message: body})
+            let body = state.newMessageText;
+            state.messages.push({id: 6, message: body});
+            body = '';
             return state
         default:
             return state
