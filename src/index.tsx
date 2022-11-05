@@ -15,8 +15,7 @@ let renderTree = () => {
 
 renderTree()
 store.subscribe(()=> {
-    let state = store.getState()
-    renderTree(state);
+    renderTree();
 }
 )
 

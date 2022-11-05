@@ -5,10 +5,11 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom'
-import store, {StoreType} from './redux/store';
+import store from './redux/store';
+import {storeType} from './redux/reduxStore';
 
 type PropsType = {
-    store: StoreType
+    store: storeType
 }
 
 
@@ -18,7 +19,6 @@ const App: React.FC<PropsType> = (props) => {
 
     let message = state.dialogPage.messages
     let dialogs = state.dialogPage.dialogsList
-    let posts = state.profilePage.posts
     let messag = state.dialogPage.newMessageText
 
 
@@ -35,9 +35,7 @@ const App: React.FC<PropsType> = (props) => {
                                                   dispatch={props.store.dispatch.bind(props.store)}
                            />}/>
 
-                    <Route path="/profile"> <Profile Posts={posts}
-                                                     message={state.profilePage.messageForNewPost}
-                                                     dispatch={props.store.dispatch.bind(props.store)}
+                    <Route path="/profile"> <Profile store={props.store}
                     /></Route>
                     {/*<Route path='/news'> <Profile/></Route>*/}
                     {/*<Route path='/music'> <Profile/></Route>*/}

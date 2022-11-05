@@ -6,14 +6,13 @@ const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 let initialState = {
     messageForNewPost: '',
     posts: [
-        {id: 1, message: 'Hi', likesCount: 4},
+        {id: 1, message: 'Hiiii', likesCount: 4},
         {id: 1, message: 'Hi, go back!', likesCount: 2},
         {id: 1, message: 'It is good', likesCount: 12},
     ]
 }
 
 const profileReducer = (state: profilePageType = initialState, action: ActionsTypes) => {
-
 
     switch (action.type) {
         case ADD_POST:
@@ -27,7 +26,7 @@ const profileReducer = (state: profilePageType = initialState, action: ActionsTy
             return state
         case CHANGE_NEW_TEXT:
             state.messageForNewPost = action.newText
-            return state
+            return {...state, messageForNewPost: action.newText}
         default:
             return state;
     }
