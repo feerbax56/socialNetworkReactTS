@@ -1,34 +1,42 @@
 import React from 'react';
 import {addPostAC, changeNewTextAC} from '../../../redux/profileReducer';
 import MyPosts from './MyPosts';
-import {storeType} from '../../../redux/reduxStore';
-
-type MyPostsType = {
-    store: storeType
-}
+import StoreContext from '../../../StoreContext';
 
 
-const MyPostsContainer: React.FC<MyPostsType> = (props) => {
-    let posts = props.store.getState().profilePage.posts
-    let message = props.store.getState().profilePage.messageForNewPost
-    let dispatch = props.store.dispatch
+const MyPostsContainer = () => {
 
-    let newTextChangeHandler =
-        (text: string) => {
-            props.store.dispatch(changeNewTextAC(text))
-        }
 
-    let addPost = () => {
-        props.store.dispatch(addPostAC(message))
-    }
+    return (
+        <StoreContext.Consumer>
+            {
+                store => {
+                    let posts = store.getState().profilePage.posts
+                    let message = store.getState().profilePage.messageForNewPost
+                    let dispatch = store.dispatch
 
-    return <MyPosts
-        Posts={posts}
-        message={message}
-        dispatch={dispatch}
-        addPost={addPost}
-        newTextChangeHandler={newTextChangeHandler}
-    />
+                    let newTextChangeHandler =
+                        (text: string) => {
+                            store.dispatch(changeNewTextAC(text))
+                        }
+
+                    let addPost = () => {
+                        store.dispatch(addPostAC(message))
+                    }
+
+                    return <MyPosts
+                        Posts={posts}
+                        message={message}
+                        dispatch={dispatch}
+                        addPost={addPost}
+                        newTextChangeHandler={newTextChangeHandler}
+                    />
+
+                }
+
+            }
+
+        </StoreContext.Consumer>)
 
 }
 
