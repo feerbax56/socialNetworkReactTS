@@ -23,18 +23,23 @@ let initialState = {
     newMessageText: ''
 }
 
-const dialogReducer = (state: dialogPageType = initialState, action: ActionsTypes) => {
+const dialogReducer = (state: dialogPageType = initialState, action: ActionsTypes): dialogPageType => {
 
 
     switch (action.type) {
         case UPDATE_NEW_MESSAGE:
-            state.newMessageText = action.newMessageText
-            return state
+            const UpdateNewMessageStateCopy = {...state}
+            UpdateNewMessageStateCopy.newMessageText = action.newMessageText
+            return UpdateNewMessageStateCopy
         case SEND_MESSAGE:
+            let SendMessageStateCopy = {...state}
             let body = state.newMessageText;
-            state.messages.push({id: 6, message: body});
-            body = '';
-            return state
+            console.log('body', body)
+            SendMessageStateCopy.messages.push({id: 6, message: body});
+            console.log('SendMessageStateCopy', SendMessageStateCopy.messages)
+            SendMessageStateCopy.newMessageText = '';
+            console.log(SendMessageStateCopy.newMessageText)
+            return SendMessageStateCopy
         default:
             return state
     }
@@ -47,10 +52,10 @@ export const addNewMessageAC = (newMessageText: string) => {
     } as const
 }
 
-export const sendMessageAC = (sendMessage: string) => {
+export const sendMessageAC = () => {
     return {
         type: SEND_MESSAGE,
-        sendMessage: sendMessage
+        // sendMessage: sendMessage
     } as const
 }
 

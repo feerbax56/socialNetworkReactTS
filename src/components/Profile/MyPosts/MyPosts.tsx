@@ -1,19 +1,9 @@
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
 import React, {ChangeEvent} from 'react';
-import {ActionsTypes, PostsType} from '../../../redux/store';
+import {MyPostsPropsType} from './MyPostsContainer';
 
-type MyPostsType = {
-    Posts: Array<PostsType>
-    message: string
-    dispatch: (action: ActionsTypes) => void
-    addPost: () => void
-    newTextChangeHandler: (text: string) => void
-}
-
-
-const MyPosts: React.FC<MyPostsType> = (props) => {
-
+const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     let PostsElements = props.Posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let onNewTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,7 +11,7 @@ const MyPosts: React.FC<MyPostsType> = (props) => {
     }
 
     let onAddPost = () => {
-        props.addPost()
+        props.addPost(props.message)
     }
 
     return (

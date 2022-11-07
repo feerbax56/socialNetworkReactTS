@@ -2,15 +2,8 @@ import classes from './Dialogs.module.css'
 import React, {ChangeEvent} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import {DialogsListType, MessagesType} from '../../redux/store';
+import {DialogsPropsType} from './DialogsContainer';
 
-
-type DialogsPropsType = {
-    addNewMessageBody: (body: string) => void
-    sendMessage: () => void
-    dialogPage: Array<DialogsListType>
-    Messages: Array<MessagesType>
-}
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
