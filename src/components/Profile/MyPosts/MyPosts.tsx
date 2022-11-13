@@ -4,7 +4,7 @@ import React, {ChangeEvent} from 'react';
 import {MyPostsPropsType} from './MyPostsContainer';
 
 const MyPosts: React.FC<MyPostsPropsType> = (props) => {
-    let PostsElements = props.Posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let PostsElements = props.Posts.map((p, i) => <Post key={i} message={p.message} likesCount={p.likesCount}/>)
 
     let onNewTextChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.newTextChangeHandler(e.currentTarget.value)

@@ -1,26 +1,26 @@
 import classes from './Dialogs.module.css'
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import {DialogsPropsType} from './DialogsContainer';
 
 
 const Dialogs: React.FC<DialogsPropsType> = (props) => {
+    const [value, setValue] = useState<string>('')
 
-    let dialogsElements = props.dialogPage.map((d) => {
-        return <DialogItem name={d.name} id={d.id}/>
+    let dialogsElements = props.dialogPage.map((d, i) => {
+        return <DialogItem key={i} name={d.name} id={d.id}/>
     })
-    let MessageElements = props.Messages.map(m => <Message message={m.message}/>)
-
-    let newMessageElement = React.createRef<HTMLTextAreaElement>()
+    let MessageElements = props.Messages.map((m,index) => <Message key={index} message={m.message}/>)
 
     let addMessage = () => {
-        props.sendMessage()
+        props.sendMessage(value)
+        setValue('')
     }
 
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = e.target.value;
-        props.addNewMessageBody(body)
+        let body = e.currentTarget.value;
+        setValue(body)
     }
 
     return (
@@ -34,8 +34,8 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
             <div>
                 <textarea
+                    value={value}
                     placeholder={'жми сюда!'}
-                    ref={newMessageElement}
                     onChange={onNewMessageChange}
                 ></textarea>
             </div>

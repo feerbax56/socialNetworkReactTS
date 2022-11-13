@@ -14,7 +14,7 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
     addNewMessageBody: (body: string) => void
-    sendMessage: () => void
+    sendMessage: (value: string) => void
 }
 
 export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
@@ -22,7 +22,7 @@ export type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         dialogPage: state.dialogPage.dialogsList,
-        Messages: state.dialogPage.messages
+        Messages: state.dialogPage.messages,
     }
 }
 
@@ -31,8 +31,8 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
         addNewMessageBody: (body: string) => {
             dispatch(addNewMessageAC(body))
         },
-        sendMessage: () => {
-            dispatch(sendMessageAC())
+        sendMessage: (value: string) => {
+            dispatch(sendMessageAC(value))
         },
     }
 }

@@ -1,4 +1,4 @@
-import {ActionsTypes, dialogPageType} from './store';
+import {ActionsTypes, DialogsListType, MessagesType} from './store';
 
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 const SEND_MESSAGE = 'SEND_MESSAGE'
@@ -20,25 +20,22 @@ let initialState = {
         {id: 3, message: 'Hi people!!!'},
         {id: 4, message: 'good news!'},
     ],
-    newMessageText: ''
+    //newMessageText: ''
 }
 
-const dialogReducer = (state: dialogPageType = initialState, action: ActionsTypes): dialogPageType => {
+type DialogsStateType = {
+    dialogsList: Array<DialogsListType>
+    messages: Array<MessagesType>
+}
+
+const dialogReducer = (state: DialogsStateType = initialState, action: ActionsTypes): DialogsStateType => {
 
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE:
-            const UpdateNewMessageStateCopy = {...state}
-            UpdateNewMessageStateCopy.newMessageText = action.newMessageText
-            return UpdateNewMessageStateCopy
         case SEND_MESSAGE:
             let SendMessageStateCopy = {...state}
-            let body = state.newMessageText;
-            console.log('body', body)
+            let body = action.value;
             SendMessageStateCopy.messages.push({id: 6, message: body});
-            console.log('SendMessageStateCopy', SendMessageStateCopy.messages)
-            SendMessageStateCopy.newMessageText = '';
-            console.log(SendMessageStateCopy.newMessageText)
             return SendMessageStateCopy
         default:
             return state
@@ -52,10 +49,10 @@ export const addNewMessageAC = (newMessageText: string) => {
     } as const
 }
 
-export const sendMessageAC = () => {
+export const sendMessageAC = (value: string) => {
     return {
         type: SEND_MESSAGE,
-        // sendMessage: sendMessage
+        value
     } as const
 }
 
