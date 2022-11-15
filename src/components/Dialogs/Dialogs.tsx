@@ -11,7 +11,7 @@ const Dialogs: React.FC<DialogsPropsType> = (props) => {
     let dialogsElements = props.dialogPage.map((d, i) => {
         return <DialogItem key={i} name={d.name} id={d.id}/>
     })
-    let MessageElements = props.Messages.map((m,index) => <Message key={index} message={m.message}/>)
+    let MessageElements = props.Messages.map((m,index) => <Message key={index} fullName={m.fullName}/>)
 
     let addMessage = () => {
         props.sendMessage(value)

@@ -15,10 +15,10 @@ let initialState = {
         {id: 7, name: 'Elena'},
     ],
     messages: [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hi every won'},
-        {id: 3, message: 'Hi people!!!'},
-        {id: 4, message: 'good news!'},
+        {id: 1, fullName: 'Hi'},
+        {id: 2, fullName: 'Hi every won'},
+        {id: 3, fullName: 'Hi people!!!'},
+        {id: 4, fullName: 'good news!'},
     ],
     //newMessageText: ''
 }
@@ -34,7 +34,7 @@ const dialogReducer = (state: DialogsStateType = initialState, action: ActionsTy
     switch (action.type) {
         case SEND_MESSAGE:
             let body = action.value;
-            return {...state, messages: [...state.messages, {id: 6, message: body}]};
+            return {...state, messages: [...state.messages, {id: 6, fullName: body}]};
         default:
             return state
     }

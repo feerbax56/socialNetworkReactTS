@@ -6,9 +6,9 @@ const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 let initialState = {
     messageForNewPost: '',
     posts: [
-        {id: 1, message: 'Hiiii', likesCount: 4},
-        {id: 1, message: 'Hi, go back!', likesCount: 2},
-        {id: 1, message: 'It is good', likesCount: 12},
+        {id: 1, fullName: 'Hiiii', likesCount: 4},
+        {id: 1, fullName: 'Hi, go back!', likesCount: 2},
+        {id: 1, fullName: 'It is good', likesCount: 12},
     ]
 }
 
@@ -18,7 +18,7 @@ const profileReducer = (state: profilePageType = initialState, action: ActionsTy
         case ADD_POST:
             const newPost: PostsType = {
                 id: 5,
-                message: state.messageForNewPost,
+                fullName: state.messageForNewPost,
                 likesCount: 5
             };
             return {

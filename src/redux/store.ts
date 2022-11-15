@@ -53,9 +53,9 @@ let store: StoreType = {
         profilePage: {
             messageForNewPost: '',
             posts: [
-                {id: 1, message: 'Hi', likesCount: 4},
-                {id: 1, message: 'Hi, go back!', likesCount: 2},
-                {id: 1, message: 'It is good', likesCount: 12},
+                {id: 1, fullName: 'Hi', likesCount: 4},
+                {id: 1, fullName: 'Hi, go back!', likesCount: 2},
+                {id: 1, fullName: 'It is good', likesCount: 12},
             ]
         },
         dialogPage: {
@@ -69,10 +69,10 @@ let store: StoreType = {
                 {id: 7, name: 'Elena'},
             ],
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'Hi every won'},
-                {id: 3, message: 'Hi people!!!'},
-                {id: 4, message: 'good news!'},
+                {id: 1, fullName: 'Hi'},
+                {id: 2, fullName: 'Hi every won'},
+                {id: 3, fullName: 'Hi people!!!'},
+                {id: 4, fullName: 'good news!'},
             ],
             newMessageText: ''
         },
