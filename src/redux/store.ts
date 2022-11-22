@@ -3,20 +3,20 @@ import {addNewMessageAC, sendMessageAC} from './dialogsReduser';
 import {sidebarReducer} from './sidebarReduser';
 
 
-export type MessagesType = {
+type MessagesType = {
     id: number
-    message: string
+    fullName: string
 }
-export type DialogsListType = {
+type DialogsListType = {
     id: number
     name: string
 }
-export type PostsType = {
+type PostsType = {
     id?: number
     message: string
     likesCount: number
 }
-export type profilePageType = {
+type profilePageType = {
     messageForNewPost: string
     posts: Array<PostsType>
 }
@@ -41,7 +41,7 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes =
+type ActionsTypes =
     ReturnType<typeof addPostAC>
     | ReturnType<typeof changeNewTextAC>
     | ReturnType<typeof addNewMessageAC>
@@ -53,9 +53,9 @@ let store: StoreType = {
         profilePage: {
             messageForNewPost: '',
             posts: [
-                {id: 1, fullName: 'Hi', likesCount: 4},
-                {id: 1, fullName: 'Hi, go back!', likesCount: 2},
-                {id: 1, fullName: 'It is good', likesCount: 12},
+                {id: 1, message: 'Hi', likesCount: 4},
+                {id: 1, message: 'Hi, go back!', likesCount: 2},
+                {id: 1, message: 'It is good', likesCount: 12},
             ]
         },
         dialogPage: {
@@ -85,15 +85,13 @@ let store: StoreType = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         //this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
     },
-    subscribe(callback)
-    {
+    subscribe(callback) {
         this._renderTree = callback
     },
-    getState()
-    {
+    getState() {
         return this._state
     }
 }

@@ -1,16 +1,32 @@
-import {ActionsTypes, PostsType, profilePageType} from './store';
+import {addNewMessageAC, sendMessageAC} from './dialogsReduser';
 
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 
+export type ActionsTypes =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof changeNewTextAC>
+    | ReturnType<typeof addNewMessageAC>
+    | ReturnType<typeof sendMessageAC>
+
+
+
+export type PostsType = {
+    id?: number
+    message: string
+    likesCount: number
+}
+
 let initialState = {
     messageForNewPost: '',
     posts: [
-        {id: 1, fullName: 'Hiiii', likesCount: 4},
-        {id: 1, fullName: 'Hi, go back!', likesCount: 2},
-        {id: 1, fullName: 'It is good', likesCount: 12},
-    ]
+        {id: 1, message: 'Hiiii', likesCount: 4},
+        {id: 1, message: 'Hi, go back!', likesCount: 2},
+        {id: 1, message: 'It is good', likesCount: 12},
+    ] as Array<PostsType>,
 }
+
+export type profilePageType = typeof initialState
 
 const profileReducer = (state: profilePageType = initialState, action: ActionsTypes): profilePageType => {
 
@@ -18,7 +34,7 @@ const profileReducer = (state: profilePageType = initialState, action: ActionsTy
         case ADD_POST:
             const newPost: PostsType = {
                 id: 5,
-                fullName: state.messageForNewPost,
+                message: state.messageForNewPost,
                 likesCount: 5
             };
             return {

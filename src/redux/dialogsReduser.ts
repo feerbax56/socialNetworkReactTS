@@ -1,7 +1,23 @@
-import {ActionsTypes, DialogsListType, MessagesType} from './store';
+import {addPostAC, changeNewTextAC} from './profileReducer';
+export type ActionsTypes =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof changeNewTextAC>
+    | ReturnType<typeof addNewMessageAC>
+    | ReturnType<typeof sendMessageAC>
+
+
 
 const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE'
 const SEND_MESSAGE = 'SEND_MESSAGE'
+
+export type MessagesType = {
+    id: number
+    fullName: string
+}
+export type DialogsListType = {
+    id: number
+    name: string
+}
 
 
 let initialState = {
@@ -13,22 +29,19 @@ let initialState = {
         {id: 5, name: 'Pavel'},
         {id: 6, name: 'Alex'},
         {id: 7, name: 'Elena'},
-    ],
+    ] as Array<DialogsListType>,
     messages: [
         {id: 1, fullName: 'Hi'},
         {id: 2, fullName: 'Hi every won'},
         {id: 3, fullName: 'Hi people!!!'},
         {id: 4, fullName: 'good news!'},
-    ],
-    //newMessageText: ''
+    ] as Array<MessagesType>,
+    newMessageText: ''
 }
 
-type DialogsStateType = {
-    dialogsList: Array<DialogsListType>
-    messages: Array<MessagesType>
-}
+export type initialStateType = typeof initialState
 
-const dialogReducer = (state: DialogsStateType = initialState, action: ActionsTypes): DialogsStateType => {
+const dialogReducer = (state: initialStateType = initialState, action: ActionsTypes): initialStateType => {
 
 
     switch (action.type) {
