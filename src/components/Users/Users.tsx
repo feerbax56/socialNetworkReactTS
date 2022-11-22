@@ -1,19 +1,11 @@
 import React from 'react';
 import s from './users.module.css'
-import {UserType} from '../../redux/usersReducer';
-
-
-export type UsersPropsType = {
-    users: Array<UserType>
-    follow: (userId: string) => void
-    unfollow: (userId: string) => void
-    setUsers: (users: Array<UserType>) => void
-}
+import {UsersPropsType} from './UsersContainer';
 
 
 const Users = (props: UsersPropsType) => {
     if (props.setUsers.length === 0) {
-        props.users = [
+        props.usersPage.users = [
             {
                 userId: '1',
                 photoUrl: 'https://img08.rl0.ru/afisha/e1200x600i/daily.afisha.ru/uploads/images/1/fa/1fab197f55db4e40987a3aaf6764572a.jpg',
@@ -40,7 +32,7 @@ const Users = (props: UsersPropsType) => {
     return (
         <div>
             {
-                props.users.map(u => <div key={u.userId}>
+                props.usersPage.users.map(u => <div key={u.userId}>
                     <span>
                         <div>
                             <img src={u.photoUrl} className={s.userPhoto}/>
