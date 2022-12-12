@@ -7,13 +7,11 @@ import {AppStateType} from '../../redux/reduxStore';
 
 
 class Users extends React.Component<UsersPropsType, AppStateType> {
-    constructor(props: UsersPropsType) {
-        super(props);
-        if (this.props.usersPage.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users?count=5').then(response => {
-                this.props.setUsers(response.data.items)
-            })
-        }
+
+    componentDidMount() {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users?count=3').then(response => {
+            this.props.setUsers(response.data.items)
+        })
     }
 
     render() {
