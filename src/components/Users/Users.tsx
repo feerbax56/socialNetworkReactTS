@@ -15,10 +15,20 @@ class Users extends React.Component<UsersPropsType, AppStateType> {
     }
 
     render() {
-        return (
+        let pageCount = Math.ceil(this.props.totalUserCount / this.props.pageSize)
+        let pages = []
+        for (let i = 0; i <= pageCount; i++) {
+            pages.push(i)
+        }
+
+        return <div>
             <div>
-                {this.props.usersPage.users.map((u) =>
-                        <div key={u.id}>
+                {pages.map(p => {
+                    return <span className = {this.props.currentPage === p && s.selectedPage}>{p}</span>
+                })}
+            </div>
+            {this.props.usersPage.users.map((u) =>
+                <div key={u.id}>
                     <span>
                         <div>
                             <img src={u.photos.small !== null ? u.photos.small : avatar} className={s.userPhoto}
@@ -33,19 +43,16 @@ class Users extends React.Component<UsersPropsType, AppStateType> {
                             }}> Follow </button>}
 
                 </span>
-                            <span>
+                    <span>
                         <div>{u.name}</div>
                             <div>{u.status}</div>
                     </span>
-                            <span>
+                    <span>
                             <div>{'u.photos.large'}</div>
                             <div>{'u.photos.small'}</div>
                     </span>
-                        </div>
-                )
-
-                }
-            </div>)
+                </div>)}
+        </div>
     }
 }
 

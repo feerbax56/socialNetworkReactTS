@@ -18,9 +18,10 @@ export type ActionsUsersTypes =
 
 
 let initialState = {
-    users: [
-
-    ] as Array<UserType>
+    users: [] as Array<UserType>,
+    totalUserCount: 0,
+    pageSize: 5,
+    currentPage: 1
 }
 
 export type initialStateType = typeof initialState
