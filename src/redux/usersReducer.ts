@@ -1,15 +1,15 @@
 export type UserType = {
-    userId: string
+    id: number
     photoUrl: string
     followed: boolean
-    fullName: string
+    name: string
     status: string
-    location: LocationType
+    photos: PhotosType
 }
 
-type LocationType = {
-    city: string
-    country: string
+type PhotosType = {
+    small: string | null | undefined
+    large: string | null | undefined
 }
 
 export type ActionsUsersTypes =
@@ -19,26 +19,27 @@ export type ActionsUsersTypes =
 
 let initialState = {
     users: [
-        {
-            userId: '1',
-            photoUrl: 'https://img08.rl0.ru/afisha/e1200x600i/daily.afisha.ru/uploads/images/1/fa/1fab197f55db4e40987a3aaf6764572a.jpg',
-            followed: true,
-            fullName: 'Gorik',
-            status: 'Holy Wor',
-            location: {city: 'Tomsk', country: 'Belarus'}
-        },
-        {
-            userId: '2', photoUrl: 'https://i.pinimg.com/originals/4f/36/37/4f3637dbd229f4887fba999336524bae.png',
-            followed: true, fullName: 'Timur', status: 'i am a GOD', location: {city: 'Rim', country: 'Israel'}
-        },
-        {
-            userId: '3',
-            photoUrl: 'https://i.pinimg.com/originals/f1/1f/5a/f11f5a23d538286db7814d41176a4c14.png',
-            followed: true,
-            fullName: 'Gorik',
-            status: 'I am found you!',
-            location: {city: 'Omsk', country: 'NoName'},
-        },
+
+        // {
+        //     userId: '1',
+        //     photoUrl: 'https://img08.rl0.ru/afisha/e1200x600i/daily.afisha.ru/uploads/images/1/fa/1fab197f55db4e40987a3aaf6764572a.jpg',
+        //     followed: true,
+        //     fullName: 'Gorik',
+        //     status: 'Holy Wor',
+        //     location: {city: 'Tomsk', country: 'Belarus'}
+        // },
+        // {
+        //     userId: '2', photoUrl: 'https://i.pinimg.com/originals/4f/36/37/4f3637dbd229f4887fba999336524bae.png',
+        //     followed: true, fullName: 'Timur', status: 'i am a GOD', location: {city: 'Rim', country: 'Israel'}
+        // },
+        // {
+        //     userId: '3',
+        //     photoUrl: 'https://i.pinimg.com/originals/f1/1f/5a/f11f5a23d538286db7814d41176a4c14.png',
+        //     followed: true,
+        //     fullName: 'Gorik',
+        //     status: 'I am found you!',
+        //     location: {city: 'Omsk', country: 'NoName'},
+        // },
     ] as Array<UserType>
 }
 
@@ -51,7 +52,7 @@ const usersReducer = (state: initialStateType = initialState, action: ActionsUse
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.userId === action.userId) {
+                    if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
                     return u
@@ -61,7 +62,7 @@ const usersReducer = (state: initialStateType = initialState, action: ActionsUse
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.userId === action.userId) {
+                    if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
                     return u
@@ -75,14 +76,14 @@ const usersReducer = (state: initialStateType = initialState, action: ActionsUse
 }
 
 
-export const followAC = (userId: string) => {
+export const followAC = (userId: number) => {
     return {
         type: 'FOLLOW', userId
 
     } as const
 }
 
-export const unFollowAC = (userId: string) => {
+export const unFollowAC = (userId: number) => {
     return {
         type: 'UNFOLLOW', userId
     } as const
