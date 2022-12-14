@@ -9,9 +9,17 @@ import {AppStateType} from '../../redux/reduxStore';
 class Users extends React.Component<UsersPropsType, AppStateType> {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users?count=3').then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items)
+            this.props.setTotalCount(response.data.totalCount)
         })
+    }
+
+    onPgeChanged(pageNumber: number) {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items)
+        });
     }
 
     render() {
@@ -21,10 +29,15 @@ class Users extends React.Component<UsersPropsType, AppStateType> {
             pages.push(i)
         }
 
+
         return <div>
             <div>
                 {pages.map(p => {
-                    return <span className = {this.props.currentPage === p && s.selectedPage}>{p}</span>
+                    let activePage = this.props.currentPage === p ? s.selectedPage : s.noneSelectedPage
+                    return <span className={activePage}
+                                 onClick={(e) => {
+                                     this.onPgeChanged(p)
+                                 }}>{p}</span>
                 })}
             </div>
             {this.props.usersPage.users.map((u) =>
