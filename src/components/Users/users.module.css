@@ -5,8 +5,10 @@
 .selectedPage{
     color: #66bf3c;
     font-weight: bold;
+    margin: 15px;
 }
 
 .noneSelectedPage{
     color: black;
+    padding: 5px;
 }
