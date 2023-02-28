@@ -19,7 +19,7 @@ const App = () => {
                     <Route path="/dialog"
                            render={() => <DialogsContainer/>}/>
 
-                    <Route path="/profile"> <Profile/></Route>
+                    <Route path="/profile/*"> <Profile/></Route>
                     {/*<Route path='/news'> <Profile/></Route>*/}
                     {/*<Route path='/music'> <Profile/></Route>*/}
                     {/*<Route path='/setting'> <Profile/></Route>*/}
