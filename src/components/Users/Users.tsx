@@ -11,16 +11,14 @@ type PropsType = {
     currentPage: number,
     onPgeChanged: (pageNumber: number) => void
     follow: (userId: number) => void
-    unfollow: (userId: number) => void
+    unFollow: (userId: number) => void
 }
 const Users = (props: PropsType) => {
-
     let pageCount = Math.ceil(props.totalUserCount / props.pageSize)
     let pages = []
     for (let i = 0; i <= pageCount; i++) {
         pages.push(i)
     }
-
 
     return (
         <div>
@@ -28,8 +26,8 @@ const Users = (props: PropsType) => {
                 {pages.map(p => {
                     let activePage = props.currentPage === p ? s.selectedPage : s.noneSelectedPage
                     return <span className={activePage}
-                                 onClick={(event) => {
-                                     // console.log((event.target as number))
+                                 onClick={(e) => {
+                                     // console.log((e.currentTarget))
                                      props.onPgeChanged(p)
                                  }}>{p}</span>
                 })}
@@ -43,12 +41,11 @@ const Users = (props: PropsType) => {
                         </div>
                         {u.followed ?
                             <button onClick={() => {
-                                props.unfollow(u.id)
+                                props.unFollow(u.id)
                             }}> Unfollow </button>
                             : <button onClick={() => {
                                 props.follow(u.id)
                             }}> Follow </button>}
-
                 </span>
                     <span>
                         <div>{u.name}</div>
