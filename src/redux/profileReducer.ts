@@ -2,13 +2,14 @@ import {addNewMessageAC, sendMessageAC} from './dialogsReduser';
 
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 export type ActionsTypes =
     ReturnType<typeof addPostAC>
     | ReturnType<typeof changeNewTextAC>
     | ReturnType<typeof addNewMessageAC>
     | ReturnType<typeof sendMessageAC>
-
+    | ReturnType<typeof setUserProfile>
 
 
 export type PostsType = {
@@ -24,6 +25,7 @@ let initialState = {
         {id: 1, message: 'Hi, go back!', likesCount: 2},
         {id: 1, message: 'It is good', likesCount: 12},
     ] as Array<PostsType>,
+    profile: {},
 }
 
 export type profilePageType = typeof initialState
@@ -45,6 +47,8 @@ const profileReducer = (state: profilePageType = initialState, action: ActionsTy
         case CHANGE_NEW_TEXT:
             state.messageForNewPost = action.newText
             return {...state, messageForNewPost: action.newText}
+        case SET_USER_PROFILE:
+            return {...state, profile: action.profile}
         default:
             return state;
     }
@@ -62,6 +66,13 @@ export const changeNewTextAC = (newText: string) => {
     return {
         type: CHANGE_NEW_TEXT,
         newText: newText
+    } as const
+}
+
+export const setUserProfile = (profile: {}) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile
     } as const
 }
 

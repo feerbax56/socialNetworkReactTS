@@ -37,27 +37,33 @@ type MapDispatchToPropsType = {
 export type UsersPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
+    onPgeChanged: any = null
+
+    constructor(props: UsersPropsType) {
+        super(props);
+
+        // this.setCurrentPage = this.props.setCurrentPage
+        this.onPgeChanged = (pageNumber: number) => {
+            console.log('onPGEChanged ', pageNumber)
+            this.props.setCurrentPage(pageNumber);
+            this.props.setTogleIsFetching(true)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+                .then(response => {
+                    this.props.setTogleIsFetching(false)
+                    this.props.setUsers(response.data.items)
+                });
+        }
+    }
 
     componentDidMount() {
         this.props.setTogleIsFetching(true)
+        // this.props.setCurrentPage(10)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalCount(response.data.totalCount)
                 this.props.setTogleIsFetching(false)
             })
-    }
-
-    onPgeChanged(pageNumber: number) {
-        // console.log(pageNumber)
-        // this.props.setCurrentPage(10)
-        this.props.setCurrentPage(pageNumber);
-        this.props.setTogleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
-                this.props.setTogleIsFetching(false)
-                this.props.setUsers(response.data.items)
-            });
     }
 
     render() {
@@ -69,6 +75,7 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
                        users={this.props.usersPage.users}
                        currentPage={this.props.currentPage}
                        onPgeChanged={this.onPgeChanged}
+                    // onPgeChanged={this.props.setCurrentPage}
                        follow={this.props.follow}
                        unFollow={this.props.unFollow}
                 />

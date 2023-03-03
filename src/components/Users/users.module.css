@@ -6,9 +6,17 @@
     color: #66bf3c;
     font-weight: bold;
     margin: 15px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 .noneSelectedPage{
     color: black;
     padding: 5px;
+    cursor: pointer;
+}
+
+.noneSelectedPage:hover{
+    color: #60cb09;
+    font-size: 20px;
 }

@@ -2,8 +2,8 @@ export type UserType = {
     id: number
     photoUrl: string
     followed: boolean
-    name: string
-    status: string
+    name: string | null
+    status: string | null
     photos: PhotosType
 }
 
@@ -88,6 +88,7 @@ export const setUsers = (users: Array<UserType>) => {
 }
 
 export const setCurrentPage = (currentPage: number) => {
+    console.log('from AC',currentPage)
     return {
         type: 'SET_CURRENT_PAGE', currentPage
     } as const

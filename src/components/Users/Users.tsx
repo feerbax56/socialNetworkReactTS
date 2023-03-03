@@ -28,7 +28,6 @@ const Users = (props: PropsType) => {
                     let activePage = props.currentPage === p ? s.selectedPage : s.noneSelectedPage
                     return <span className={activePage}
                                  onClick={(e) => {
-                                     // console.log((e.currentTarget))
                                      props.onPgeChanged(p)
                                  }}>{p}</span>
                 })}
