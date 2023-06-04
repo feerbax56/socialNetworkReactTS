@@ -17,7 +17,7 @@ const ProfileInfo = ({profile}: { profile: ProfileType | null }) => {
                  alt="Earth"></img>
         </div>
         <div className={classes.description}>
-            <img src={profile?.photos.large !== null ? profile?.photos.large : avatar} alt=""/>
+            <img src={profile?.photos.large !== null ? profile?.photos.large : avatar} alt="" style={{maxWidth: '300px', maxHeight: '300px'}}/>
 
             {profile?.lookingForAJob && <div>{profile?.lookingForAJob}</div>}
         </div>
