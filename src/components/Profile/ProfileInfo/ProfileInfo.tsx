@@ -20,6 +20,7 @@ const ProfileInfo = ({profile}: { profile: ProfileType | null }) => {
             <img src={profile?.photos.large !== null ? profile?.photos.large : avatar} alt="" style={{maxWidth: '300px', maxHeight: '300px'}}/>
 
             {profile?.lookingForAJob && <div>{profile?.lookingForAJob}</div>}
+            {profile?.fullName && <div>{profile?.fullName}</div>}
         </div>
     </>)
 }

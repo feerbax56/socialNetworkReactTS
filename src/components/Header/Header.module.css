@@ -1,8 +1,15 @@
 .header {
     grid-area: h;
     background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header img {
     width: 40px;
+}
+
+.LoginBlock{
+    text-decoration: none;
 }

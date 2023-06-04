@@ -51,6 +51,7 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
                 .then(response => {
                     this.props.setTogleIsFetching(false)
                     this.props.setUsers(response.data.items)
+
                 });
         }
     }
