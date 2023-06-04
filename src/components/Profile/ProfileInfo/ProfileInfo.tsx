@@ -2,11 +2,11 @@ import classes from './ProfileInfo.module.css'
 import React from 'react';
 import preloader from '../../../assets/img/loading-gif.gif';
 import avatar from '../../../assets/img/avatar.jpg';
-import {UserType} from '../../../redux/usersReducer';
+import {ProfileType} from '../../../redux/profileReducer';
 
 
-const ProfileInfo = (props: UserType) => {
-    if (!props.id) {
+const ProfileInfo = ({profile}: { profile: ProfileType | null }) => {
+    if (!profile?.userId) {
         return <img src={preloader} alt={'preloader'} style={{width: '350px'}}/>
     }
 
@@ -17,9 +17,9 @@ const ProfileInfo = (props: UserType) => {
                  alt="Earth"></img>
         </div>
         <div className={classes.description}>
-            <img src={props.photos.large !== null ? props.photos.large : avatar} alt=""/>
+            <img src={profile?.photos.large !== null ? profile?.photos.large : avatar} alt=""/>
 
-            {props.status && <div>{props.status}</div>}
+            {profile?.lookingForAJob && <div>{profile?.lookingForAJob}</div>}
         </div>
     </>)
 }

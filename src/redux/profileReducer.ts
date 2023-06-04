@@ -25,7 +25,7 @@ let initialState = {
         {id: 1, message: 'Hi, go back!', likesCount: 2},
         {id: 1, message: 'It is good', likesCount: 12},
     ] as Array<PostsType>,
-    profile: {},
+    profile: {} as ProfileType,
 }
 
 export type profilePageType = typeof initialState
@@ -69,7 +69,7 @@ export const changeNewTextAC = (newText: string) => {
     } as const
 }
 
-export const setUserProfile = (profile: {}) => {
+export const setUserProfile = (profile: ProfileType) => {
     return {
         type: SET_USER_PROFILE,
         profile
@@ -78,3 +78,28 @@ export const setUserProfile = (profile: {}) => {
 
 
 export default profileReducer
+
+//types
+export type ProfileType =  {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: Array<ContactsType>
+    photos: PhotosType
+}
+export type ContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
+}
+
+export type PhotosType = {
+    small: string
+    large: string
+}

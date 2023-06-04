@@ -27,7 +27,7 @@ const Users = (props: PropsType) => {
                 {pages.map(p => {
                     let activePage = props.currentPage === p ? s.selectedPage : s.noneSelectedPage
                     return <span className={activePage}
-                                 onClick={(e) => {
+                                 onClick={() => {
                                      props.onPgeChanged(p)
                                  }}>{p}</span>
                 })}
@@ -51,7 +51,7 @@ const Users = (props: PropsType) => {
                 </span>
                     <span>
                         <div>{u.name}</div>
-                            <div>{u.status}</div>
+                            <div>{u.lookingForAJob}</div>
                     </span>
                     <span>
                             <div>{'u.photos.large'}</div>

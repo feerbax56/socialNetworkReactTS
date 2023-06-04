@@ -1,6 +1,5 @@
-import profileReducer, {addPostAC, changeNewTextAC} from './profileReducer';
+import {addPostAC, changeNewTextAC} from './profileReducer';
 import {addNewMessageAC, sendMessageAC} from './dialogsReduser';
-import {sidebarReducer} from './sidebarReduser';
 
 
 type MessagesType = {
@@ -83,7 +82,7 @@ let store: StoreType = {
     },
 
     dispatch(action) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        // this._state.profilePage = profileReducer(this._state.profilePage, action);
         //this._state.dialogPage = dialogsReducer(this._state.dialogPage, action);
         // this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 

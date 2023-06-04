@@ -3,7 +3,7 @@ export type UserType = {
     photoUrl: string
     followed: boolean
     name: string | null
-    status: string | null
+    lookingForAJob: string | null
     photos: PhotosType
 }
 
