@@ -14,7 +14,7 @@ import React from 'react';
 import axios from 'axios';
 import Users from './Users';
 import preloader from '../../assets/img/loading-gif.gif'
-import {getUsers} from '../../dal/api';
+import {usersAPI} from '../../dal/api';
 
 
 type MapStateToPropsType = {
@@ -60,7 +60,7 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
 
     componentDidMount() {
         this.props.setTogleIsFetching(true)
-        getUsers(this.props.currentPage, this.props.pageSize)
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(data => {
                 debugger
                 this.props.setUsers(data.items)
