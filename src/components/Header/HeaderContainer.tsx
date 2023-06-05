@@ -6,7 +6,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 type MapDispatchToPropsType = {
-    setAuthUserData: (id: number, login: string, email: string) => void
+    setAuthUserData: (id: number, email: string, login: string) => void
 }
 
 type UsersPropsType = UserDataType & MapDispatchToPropsType
@@ -18,8 +18,8 @@ class HeaderContainer extends React.Component<UsersPropsType, AppStateType> {
         })
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    let {id, login, email} = response.data.data
-                    this.props.setAuthUserData(id, login, email)
+                    let {id, email, login} = response.data.data
+                    this.props.setAuthUserData(id, email, login)
                 }
             })
 
@@ -32,8 +32,10 @@ class HeaderContainer extends React.Component<UsersPropsType, AppStateType> {
 }
 
 const mapStateToProps = (state: AppStateType) => ({
-    isAuth: state.auth.isAuth,
+    id: state.auth.id,
     login: state.auth.login,
+    email: state.auth.email,
+    isAuth: state.auth.isAuth,
 })
 
 export default connect(mapStateToProps, {setAuthUserData})(HeaderContainer);

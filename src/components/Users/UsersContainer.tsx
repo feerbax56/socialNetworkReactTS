@@ -44,10 +44,11 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
 
         // this.setCurrentPage = this.props.setCurrentPage
         this.onPgeChanged = (pageNumber: number) => {
-            console.log('onPGEChanged ', pageNumber)
             this.props.setCurrentPage(pageNumber);
             this.props.setTogleIsFetching(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
                 .then(response => {
                     this.props.setTogleIsFetching(false)
                     this.props.setUsers(response.data.items)
@@ -59,7 +60,9 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
     componentDidMount() {
         this.props.setTogleIsFetching(true)
         // this.props.setCurrentPage(10)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+            withCredentials: true
+        })
             .then(response => {
                 this.props.setUsers(response.data.items)
                 this.props.setTotalCount(response.data.totalCount)
