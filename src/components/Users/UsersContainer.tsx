@@ -14,6 +14,7 @@ import React from 'react';
 import axios from 'axios';
 import Users from './Users';
 import preloader from '../../assets/img/loading-gif.gif'
+import {getUsers} from '../../dal/api';
 
 
 type MapStateToPropsType = {
@@ -59,15 +60,14 @@ class UsersContainer extends React.Component<UsersPropsType, AppStateType> {
 
     componentDidMount() {
         this.props.setTogleIsFetching(true)
-        // this.props.setCurrentPage(10)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-            withCredentials: true
-        })
-            .then(response => {
-                this.props.setUsers(response.data.items)
-                this.props.setTotalCount(response.data.totalCount)
+        getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
+                debugger
+                this.props.setUsers(data.items)
+                this.props.setTotalCount(data.totalCount)
                 this.props.setTogleIsFetching(false)
             })
+
     }
 
     render() {
